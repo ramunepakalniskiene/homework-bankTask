@@ -1,4 +1,5 @@
 import java.util.Objects;
+import java.util.Random;
 import java.util.UUID;
 
 public class User {
@@ -52,12 +53,12 @@ public class User {
     }
 
     public void setGender(String gender) {
-        if(gender.equals(0)) {
+        if (gender.equals("0")) {
             this.gender = "MAN";
-        } else if (gender.equals(1)){
+        } else if (gender.equals("1")) {
             this.gender = "WOMAN";
-        }else{
-            this.gender="OTHER";
+        } else {
+            this.gender = "OTHER";
         }
     }
 
@@ -74,7 +75,10 @@ public class User {
     }
 
     public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
+        if (accountNumber.equals("0")) {
+            this.accountNumber = generateAccountNumber();
+        }
+
     }
 
     public double getBalance() {
@@ -85,7 +89,8 @@ public class User {
         this.balance = balance;
     }
 
-    public User createUser(User user){
+    public User createUser(User user) {
+
 
         return null;
     }
@@ -115,4 +120,20 @@ public class User {
     public int hashCode() {
         return Objects.hash(id, name, age, gender, email, accountNumber, balance);
     }
+
+    public String generateAccountNumber() {
+        Random randomNumber = new Random();
+        String accountNumber = "LT";
+        for (int i = 0; i < 18; i++) {
+            int n = randomNumber.nextInt(10) + 0;
+            accountNumber += Integer.toString(n);
+        }
+        for (int i = 0; i < 20; i++) {
+            if (i % 4 == 0);
+//                System.out.print(" ");
+//            System.out.print(accountNumber.charAt(i));
+        } return accountNumber;
+    }
 }
+
+
