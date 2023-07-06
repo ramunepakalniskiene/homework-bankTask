@@ -36,36 +36,46 @@ public class BankAccount extends User{
         return null;
         
     }
-    public Long creditUserBalance() {
-        Long currentAmount = getBalance();
-        if (currentAmount != 0) {
-            setBalance(Long.valueOf(JOptionPane.showInputDialog(null, "Enter the amount you want to withdraw", "Message: ",JOptionPane.PLAIN_MESSAGE)));
-            balance-=currentAmount;
-            transaction = currentAmount;
+
+        void bankAccountTransactions(){
+        String[]options={"WITHDRAW", "DEPOSIT", "SHOW CURRENT BALANCE"};
+        int optionSelected=JOptionPane.showOptionDialog(null, "Select the option:","Select:", 0, JOptionPane.PLAIN_MESSAGE,null,options,0 );
+        if (optionSelected==0){
+            this.creditUserBalance();
+            this.toString();
+        }else if(optionSelected==1){
+            this.debitUserBalance();
+            this.toString();
+        } else {
+            this.toString();
+        }
 
         }
-        return currentAmount;
-    }
-
-
-        void bankAccountTransactions(int balance){
-
-
-        }
+//        int optionSelected=JOptionPane.showOptionDialog(null, "Do you want to continue?:","Select the option:", 0, JOptionPane.PLAIN_MESSAGE,null,options,0 );
 
 
     public Long debitUserBalance(){
             Long currentAmount=0L;
             setBalance(Long.valueOf(JOptionPane.showInputDialog(null, "Enter the amount you want to deposit", "Message: ",JOptionPane.PLAIN_MESSAGE)));
             balance+=currentAmount;
-            transaction=currentAmount;
+//            transaction=currentAmount;
         return currentAmount;
         }
 
+    public Long creditUserBalance() {
+        Long currentAmount = getBalance();
+        if (currentAmount != 0) {
+            setBalance(Long.valueOf(JOptionPane.showInputDialog(null, "Enter the amount you want to withdraw", "Message: ",JOptionPane.PLAIN_MESSAGE)));
+            balance-=currentAmount;
+//            transaction = currentAmount;
+
+        }
+        return currentAmount;
+    }
+
+
     @Override
     public String toString() {
-        return "Bank{" +
-                "balance=" + balance +
-                '}';
+        return "Your Bank Account balance currently is: " + balance;
     }
 }

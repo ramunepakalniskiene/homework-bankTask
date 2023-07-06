@@ -7,8 +7,7 @@ public class UserInputDialogBox {
         userDetails.createUser(userDetails);
 
         BankAccount bankAccount = new BankAccount();
-        bankAccount.debitUserBalance();
-        bankAccount.creditUserBalance();
+        bankAccount.bankAccountTransactions();
         System.out.println(bankAccount);
 
 
