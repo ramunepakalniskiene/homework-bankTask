@@ -83,9 +83,10 @@ public class User {
     }
 
     public User createUser(User user) {
-        int firstStepAnswer = JOptionPane.showConfirmDialog(null, "Hello, do you want proceed by creating bank account in our bank?", "Do you want to proceed?", JOptionPane.YES_NO_CANCEL_OPTION);
+        int firstStepAnswer = JOptionPane.showConfirmDialog(null, "Do you want proceed by creating bank account in our bank?", "Do you want to proceed?", JOptionPane.YES_NO_CANCEL_OPTION);
         if (firstStepAnswer != 0) {
             JOptionPane.showMessageDialog(null, "Thanks for visiting our internet bank, looking forward to see you in the future!");
+            System.exit(0);
         } else {
             user.setName(JOptionPane.showInputDialog(null, "Please enter your name", "name"));
             user.setAge(Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter your age", "00")));
@@ -104,7 +105,7 @@ public class User {
                         0)));
 
                 user.setEmail(JOptionPane.showInputDialog(null, "Please enter your email", "example@example.com"));
-                user.setAccountNumber(String.valueOf(JOptionPane.showConfirmDialog(null, "Do you want to create bank a account?", "Final step:", JOptionPane.YES_NO_CANCEL_OPTION)));
+                user.setAccountNumber(String.valueOf(JOptionPane.showConfirmDialog(null, "Do you want to create a bank account?", "Final confirmation:", JOptionPane.YES_NO_CANCEL_OPTION)));
                 user.setId(UUID.randomUUID());
                 JOptionPane.showMessageDialog(null, "Congratulations, your account has been successfully created!", "Confirmation:", JOptionPane.INFORMATION_MESSAGE);
                 JOptionPane.showMessageDialog(null, String.valueOf(user), "Please see your bank details below:", JOptionPane.INFORMATION_MESSAGE);
@@ -117,20 +118,12 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", gender='" + gender + '\'' +
-                ", email='" + email + '\'' +
-                ", accountNumber='" + accountNumber + '\''+
-                '}';
-    }
-
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, age, gender, email, accountNumber);
+        return "Your bank account details are:  " +'\n'+
+                "name:" + name + '\n' +
+                "age:" + age + '\n' +
+                "gender:" + gender + '\n' +
+                "email:" + email + '\n' +
+                "accountNumber:" + accountNumber;
     }
 
     public String generateAccountNumber() {
@@ -142,8 +135,6 @@ public class User {
         }
         for (int i = 0; i < 20; i++) {
             if (i % 4 == 0) ;
-//                System.out.print(" ");
-//            System.out.print(accountNumber.charAt(i));
         }
         return accountNumber;
     }
