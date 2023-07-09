@@ -90,11 +90,6 @@ public class BankAccount extends User {
     }
 
 
-    private String showCurrentAmount() {
-        return "You current balance is: " + getBalance();
-
-    }
-
     @Override
     public String toString() {
         return "Your Bank Account balance currently is: " + balance;
