@@ -81,7 +81,7 @@ public class BankAccount extends User {
         transaction = -creditedAmount;
         if (balance < 0) {
             JOptionPane.showMessageDialog(null, "Transaction failed: please deposit your account", String.valueOf(balance), JOptionPane.INFORMATION_MESSAGE);
-            JOptionPane.showMessageDialog(null, balance=0.00, "Your current balance is: ", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, balance, "Your current balance is: ", JOptionPane.INFORMATION_MESSAGE);
             System.out.println("Your current balance is " + balance + " please debit your account!");
         } else {
             JOptionPane.showMessageDialog(null, creditedAmount, "Credited amount:", JOptionPane.INFORMATION_MESSAGE);

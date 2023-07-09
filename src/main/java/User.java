@@ -91,7 +91,8 @@ public class User {
             user.setName(JOptionPane.showInputDialog(null, "Please enter your name", "name"));
             user.setAge(Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter your age", "00")));
             if (user.getAge() < 18) {
-                JOptionPane.showMessageDialog(null, "Sorry, account can not be created in our bank due to age limitation!", "WARNING!", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Sorry, account can not be created in our bank due to age limitation!Goodbye!", "WARNING!", JOptionPane.WARNING_MESSAGE);
+                System.exit(0);
             } else {
                 String[] responses = {"MAN", "WOMAN", "OTHER"};
                 user.setGender(String.valueOf(JOptionPane.showOptionDialog(
