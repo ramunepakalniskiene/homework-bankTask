@@ -1,16 +1,16 @@
 import javax.swing.*;
 import java.util.UUID;
 
-public class BankAccount extends User {
+public class BankAccount  {
+    private User user;
     private double balance;
-    private double transaction;
 
 
-    public BankAccount(UUID id, String name, int age, String gender, String email, String accountNumber, double balance) {
-        super(id, name, age, gender, email, accountNumber);
+    public BankAccount(User user, double balance) {
+        this.user = user;
         this.balance = balance;
-
     }
+
 
     public BankAccount() {
 
@@ -23,14 +23,6 @@ public class BankAccount extends User {
 
     public void setBalance(double balance) {
         this.balance = balance;
-    }
-
-    public double getTransaction() {
-        return transaction;
-    }
-
-    public void setTransaction(double transaction) {
-        this.transaction = transaction;
     }
 
 
@@ -64,29 +56,31 @@ public class BankAccount extends User {
 
 
     public double debitUserBalance() {
-        double currentBalance = 0;
-        setBalance(Double.valueOf(JOptionPane.showInputDialog(null, "Enter the amount you want to deposit", "Message: ", JOptionPane.PLAIN_MESSAGE)));
-        balance += currentBalance;
-        transaction = currentBalance;
-        JOptionPane.showMessageDialog(null, balance, "Deposited amount:", JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(null, balance, "Transaction was successful!", JOptionPane.INFORMATION_MESSAGE);
+        double debitedAmount=(Double.valueOf(JOptionPane.showInputDialog(null, "Enter the amount you want to deposit", "Message: ", JOptionPane.PLAIN_MESSAGE)));
+        balance += debitedAmount;
+        JOptionPane.showMessageDialog(null, debitedAmount, "Deposited amount:", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, getBalance(), "Transaction was successful, balance is:",JOptionPane.INFORMATION_MESSAGE);
 
         System.out.println("Transaction was successful, your current balance is: " + balance);
-        return balance;
+        return getBalance();
     }
 
     public double creditUserBalance() {
         double creditedAmount = Double.parseDouble(JOptionPane.showInputDialog(null, "Enter the amount you want to withdraw", "Message: ", JOptionPane.PLAIN_MESSAGE));
+
+
         balance -= creditedAmount;
-        transaction = -creditedAmount;
         if (balance < 0) {
-            JOptionPane.showMessageDialog(null, "Transaction failed: please deposit your account", String.valueOf(balance), JOptionPane.INFORMATION_MESSAGE);
-            JOptionPane.showMessageDialog(null, balance, "Your current balance is: ", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println("Your current balance is " + balance + " please debit your account!");
+            JOptionPane.showMessageDialog(null, "Transaction failed: please check your account balance");
+            //JOptionPane.showMessageDialog(null, balance, "Your current balance is: ", JOptionPane.INFORMATION_MESSAGE);
+            //System.out.println("Your current balance is " + balance + " please debit your account!");
         } else {
+
             JOptionPane.showMessageDialog(null, creditedAmount, "Credited amount:", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, getBalance(), "Transaction was successful, balance is:",JOptionPane.INFORMATION_MESSAGE);
             System.out.println("Transaction was successful, your current balance is: " + balance);
-        }return balance;
+        }
+        return balance;
     }
 
 

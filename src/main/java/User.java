@@ -1,5 +1,5 @@
 import javax.swing.*;
-import java.util.Objects;
+import java.net.PasswordAuthentication;
 import java.util.Random;
 import java.util.UUID;
 
@@ -10,19 +10,30 @@ public class User {
     private String gender;
     private String email;
     private String accountNumber;
+    private String password;
+    private String userName;
 
 
     public User() {
     }
 
-    public User(UUID id, String name, int age, String gender, String email, String accountNumber) {
+    public User(UUID id, String name, int age, String gender, String email, String accountNumber, String password, String userName) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.email = email;
         this.accountNumber = accountNumber;
+        this.password = password;
+        this.userName = userName;
+    }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public UUID getId() {
@@ -51,6 +62,14 @@ public class User {
 
     public String getGender() {
         return gender;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setGender(String gender) {
@@ -89,6 +108,9 @@ public class User {
             System.exit(0);
         } else {
             user.setName(JOptionPane.showInputDialog(null, "Please enter your name", "name"));
+            user.setUserName(JOptionPane.showInputDialog (null, "Please create your user name", "User name:d"));
+            user.setPassword(JOptionPane.showInputDialog (null, "Please create your password", "password"));
+
             user.setAge(Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter your age", "00")));
             if (user.getAge() < 18) {
                 JOptionPane.showMessageDialog(null, "Sorry, account can not be created in our bank due to age limitation!Goodbye!", "WARNING!", JOptionPane.WARNING_MESSAGE);
@@ -121,6 +143,8 @@ public class User {
     public String toString() {
         return "Your bank account details are:  " +'\n'+
                 "name:" + name + '\n' +
+                "User name:" + userName + '\n' +
+                "password:" + password + '\n' +
                 "age:" + age + '\n' +
                 "gender:" + gender + '\n' +
                 "email:" + email + '\n' +

@@ -6,7 +6,7 @@ public class Main {
         BankAccount bankAccount = new BankAccount();
 
         JOptionPane.showMessageDialog(null,"Welcome to The Best Bank!","WELCOME MESSAGE", JOptionPane.INFORMATION_MESSAGE );
-        userDetails.createUser(userDetails);
+//        userDetails.createUser(userDetails);
         bankAccount.bankAccountTransactions();
 
         }
