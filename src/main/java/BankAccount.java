@@ -68,14 +68,12 @@ public class BankAccount  {
     public double creditUserBalance() {
         double creditedAmount = Double.parseDouble(JOptionPane.showInputDialog(null, "Enter the amount you want to withdraw", "Message: ", JOptionPane.PLAIN_MESSAGE));
 
-
-        balance -= creditedAmount;
-        if (balance < 0) {
+        if (balance < creditedAmount) {
             JOptionPane.showMessageDialog(null, "Transaction failed: please check your account balance");
             //JOptionPane.showMessageDialog(null, balance, "Your current balance is: ", JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Your current balance is " + balance + " please debit your account!");
         } else {
-
+            balance -= creditedAmount;
             JOptionPane.showMessageDialog(null, creditedAmount, "Credited amount:", JOptionPane.INFORMATION_MESSAGE);
             JOptionPane.showMessageDialog(null, getBalance(), "Transaction was successful, balance is:",JOptionPane.INFORMATION_MESSAGE);
             System.out.println("Transaction was successful, your current balance is: " + balance);

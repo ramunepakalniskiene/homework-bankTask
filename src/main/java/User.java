@@ -101,54 +101,20 @@ public class User {
 
     }
 
-    public User createUser(User user) {
-        int firstStepAnswer = JOptionPane.showConfirmDialog(null, "Do you want proceed by creating bank account in our bank?", "Do you want to proceed?", JOptionPane.YES_NO_CANCEL_OPTION);
-        if (firstStepAnswer != 0) {
-            JOptionPane.showMessageDialog(null, "Thanks for visiting our internet bank, looking forward to see you in the future!");
-            System.exit(0);
-        } else {
-            user.setName(JOptionPane.showInputDialog(null, "Please enter your name", "name"));
-            user.setUserName(JOptionPane.showInputDialog (null, "Please create your user name", "User name:d"));
-            user.setPassword(JOptionPane.showInputDialog (null, "Please create your password", "password"));
 
-            user.setAge(Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter your age", "00")));
-            if (user.getAge() < 18) {
-                JOptionPane.showMessageDialog(null, "Sorry, account can not be created in our bank due to age limitation!Goodbye!", "WARNING!", JOptionPane.WARNING_MESSAGE);
-                System.exit(0);
-            } else {
-                String[] responses = {"MAN", "WOMAN", "OTHER"};
-                user.setGender(String.valueOf(JOptionPane.showOptionDialog(
-                        null,
-                        "Please select your gender: ",
-                        "Select correct option",
-                        JOptionPane.YES_NO_CANCEL_OPTION,
-                        JOptionPane.INFORMATION_MESSAGE,
-                        null,
-                        responses,
-                        0)));
-
-                user.setEmail(JOptionPane.showInputDialog(null, "Please enter your email", "example@example.com"));
-                user.setAccountNumber(String.valueOf(JOptionPane.showConfirmDialog(null, "Do you want to create a bank account?", "Final confirmation:", JOptionPane.YES_NO_CANCEL_OPTION)));
-                user.setId(UUID.randomUUID());
-                JOptionPane.showMessageDialog(null, "Congratulations, your account has been successfully created!", "Confirmation:", JOptionPane.INFORMATION_MESSAGE);
-                JOptionPane.showMessageDialog(null, String.valueOf(user), "Please see your bank details below:", JOptionPane.INFORMATION_MESSAGE);
-                System.out.println(user);
-            }
-
-        }return user;
-    }
 
 
     @Override
     public String toString() {
         return "Your bank account details are:  " +'\n'+
                 "name:" + name + '\n' +
-                "User name:" + userName + '\n' +
+                "user name:" + userName + '\n' +
                 "password:" + password + '\n' +
                 "age:" + age + '\n' +
                 "gender:" + gender + '\n' +
                 "email:" + email + '\n' +
-                "accountNumber:" + accountNumber;
+                "accountNumber:" + accountNumber+'\n'+
+                "==========================="+ "\n";
     }
 
     public String generateAccountNumber() {
